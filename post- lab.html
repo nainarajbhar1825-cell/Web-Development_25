@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Study Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-500 to-purple-600
+             min-h-screen p-5">
+
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center text-white mb-8">
+            <h1 class="text-4xl font-bold">📚 Study Planner</h1>
+            <p class="mt-2">Plan your studies and stay productive!</p>
+        </div>
+
+        <!-- Add Task -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">
+                Add Study Task
+            </h2>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input id="task" type="text"
+                    placeholder="Enter subject or task"
+                    class="flex-1 p-3 border rounded-xl
+                           focus:outline-none focus:border-blue-500">
+
+                <button onclick="addTask()"
+                    class="bg-blue-600 text-white px-6 py-3
+                           rounded-xl hover:bg-blue-700">
+                    Add Task
+                </button>
+            </div>
+        </div>
+
+        <!-- Tasks -->
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4">
+                📝 Today's Tasks
+            </h2>
+
+            <ul id="list"></ul>
+        </div>
+
+    </div>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("task");
+            let text = input.value.trim();
+
+            if (text === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            let li = document.createElement("li");
+
+            li.className =
+                "flex justify-between items-center bg-gray-50 " +
+                "p-4 rounded-xl mb-3 border";
+
+            li.innerHTML = `
+                <span onclick="complete(this)"
+                    class="cursor-pointer font-medium">
+                    ${text}
+                </span>
+
+                <button onclick="removeTask(this)"
+                    class="text-red-500 font-bold hover:text-red-700">
+                    Delete
+                </button>
+            `;
+
+            document.getElementById("list").appendChild(li);
+            input.value = "";
+        }
+
+        function complete(task) {
+            task.classList.toggle("line-through");
+            task.classList.toggle("text-gray-400");
+        }
+
+        function removeTask(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+</body>
+</html>
