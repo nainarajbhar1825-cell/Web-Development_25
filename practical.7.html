@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College FAQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-blue-50 p-6">
+
+    <div class="max-w-2xl mx-auto mt-10">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">
+            Student FAQ
+        </h1>
+
+        <div class="faq bg-white p-5 rounded-lg shadow mb-4 cursor-pointer">
+            <h2 class="font-bold text-lg">
+                What are the college timings?
+            </h2>
+            <p class="answer hidden text-gray-600 mt-3">
+                College timings are from 9:00 AM to 4:00 PM.
+            </p>
+        </div>
+
+        <div class="faq bg-white p-5 rounded-lg shadow mb-4 cursor-pointer">
+            <h2 class="font-bold text-lg">
+                How can I apply for exams?
+            </h2>
+            <p class="answer hidden text-gray-600 mt-3">
+                You can apply through the college student portal.
+            </p>
+        </div>
+
+        <div class="faq bg-white p-5 rounded-lg shadow mb-4 cursor-pointer">
+            <h2 class="font-bold text-lg">
+                Where can I get my timetable?
+            </h2>
+            <p class="answer hidden text-gray-600 mt-3">
+                The timetable is available on the college website.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let questions = document.querySelectorAll(".faq");
+
+        questions.forEach(function(question) {
+            question.addEventListener("click", function() {
+                let answer = question.querySelector(".answer");
+                answer.classList.toggle("hidden");
+            });
+        });
+    </script>
+
+</body>
+</html>
